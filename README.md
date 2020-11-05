@@ -34,23 +34,59 @@ Performance와 S3 API에 맞춰서 디자인 되었고 100% 오픈 소스입니�
 
 ## MinIO Architecture
 
+아래 그림이 MinIO 구성의 중요한 점을 잘 보여주고 있다. 기존  Storage 서비스를 사용할 경우에는 `Gateway` 방식으로 적용하고 <br/>
+독단적인 서버 역할을 할 경우 서버(Standalone or Distributed Servers)로 구성할 수 있다.
+
 ![MinIO Architecture](https://min.io/resources/img/products/multi-cloud-gateway.svg)
 
 
-## Install MinIO
+## MinIO on MAC OS
 
-### Installing on Mac OS
+### Install MinIO
 
 ```bash
 brew install minio/stable/minio
 ```
+### Up and Running MinIO
 
 ```bash
 minio server /data
 ```
 
-### Installing on Kubernetes
+## MinIO on MiniKube
+
+
+### Install Helm
 
 ```
+helm install --set accessKey=minioadmin,secretKey=minioadmin --generate-name minio/minio
+```
+
+### Tips
+:warn: 만약 설치 시, 메모리가 부족하다는 메시지로 설치가 되지 않는다면 해당 로컬 쿠버네티스를 삭제하고 다시 설치해야 한다. <br/>
 
 ```
+minikube delete
+🔥  virtualbox 의 "minikube" 를 삭제하는 중 ...
+💀  "minikube" 클러스터 관련 정보가 모두 삭제되었습니다
+```
+
+메모리 사이즈 증가
+```
+minikube --memory 8192 --cpus 2 start
+...
+🏄  Done! kubectl is now configured to use "minikube" by default
+```
+
+확인
+```
+cat ~/.minikube/config/config.json                                     {
+    "WantReportError": true,
+    "dashboard": true,
+    "ingress": true,
+    "memory": 8192
+}
+```
+
+## Reference
+- []()
