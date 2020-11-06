@@ -71,14 +71,14 @@ minikube delete
 💀  "minikube" 클러스터 관련 정보가 모두 삭제되었습니다
 ```
 
-메모리 사이즈 증가
+**메모리 사이즈 증가**
 ```
 minikube --memory 8192 --cpus 2 start
 ...
 🏄  Done! kubectl is now configured to use "minikube" by default
 ```
 
-확인
+**확인 방법**
 ```
 cat ~/.minikube/config/config.json                                     {
     "WantReportError": true,
@@ -89,4 +89,4 @@ cat ~/.minikube/config/config.json                                     {
 ```
 
 ## Reference
-- []()
+- [MinIO Reference](http://min.io)
